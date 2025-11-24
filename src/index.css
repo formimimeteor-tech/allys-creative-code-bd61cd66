@@ -8,35 +8,62 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Light, airy backgrounds */
+    --background: 210 40% 98%;
+    --foreground: 220 20% 20%;
 
+    /* Card surfaces with subtle warmth */
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 220 20% 20%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 220 20% 20%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Sky Blue primary - main brand color */
+    --primary: 197 71% 73%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Baby Pink secondary */
+    --secondary: 351 44% 86%;
+    --secondary-foreground: 220 20% 20%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    /* Sage Green accent */
+    --accent: 95 32% 63%;
+    --accent-foreground: 0 0% 100%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    /* Muted tones for subtle elements */
+    --muted: 210 30% 94%;
+    --muted-foreground: 220 15% 50%;
 
+    /* Destructive states */
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    /* Borders and inputs - very subtle */
+    --border: 210 25% 90%;
+    --input: 210 25% 90%;
+    --ring: 197 71% 73%;
 
-    --radius: 0.5rem;
+    /* Rounded corners for soft feel */
+    --radius: 0.75rem;
+    
+    /* Custom gradients */
+    --gradient-sky: linear-gradient(135deg, hsl(197 71% 73%) 0%, hsl(197 71% 83%) 100%);
+    --gradient-pink: linear-gradient(135deg, hsl(351 44% 86%) 0%, hsl(351 44% 92%) 100%);
+    --gradient-sage: linear-gradient(135deg, hsl(95 32% 63%) 0%, hsl(95 32% 73%) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(210 40% 98%) 0%, hsl(197 71% 95%) 50%, hsl(351 44% 95%) 100%);
+    
+    /* Shadows for depth */
+    --shadow-sm: 0 2px 8px hsl(220 20% 20% / 0.05);
+    --shadow-md: 0 4px 16px hsl(220 20% 20% / 0.08);
+    --shadow-lg: 0 8px 32px hsl(220 20% 20% / 0.12);
+    --shadow-colored-sky: 0 8px 24px hsl(197 71% 73% / 0.2);
+    --shadow-colored-pink: 0 8px 24px hsl(351 44% 86% / 0.2);
+    --shadow-colored-sage: 0 8px 24px hsl(95 32% 63% / 0.2);
+    
+    /* Transitions */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
     --sidebar-background: 0 0% 98%;
 
@@ -101,5 +128,103 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+    font-feature-settings: "kern" 1, "liga" 1;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Custom animations and utilities */
+@layer utilities {
+  .animate-fade-in {
+    animation: fadeIn 0.6s ease-out;
+  }
+  
+  .animate-slide-up {
+    animation: slideUp 0.6s ease-out;
+  }
+  
+  .animate-scale-in {
+    animation: scaleIn 0.4s ease-out;
+  }
+  
+  .hover-lift {
+    transition: var(--transition-smooth);
+  }
+  
+  .hover-lift:hover {
+    transform: translateY(-4px);
+  }
+  
+  .gradient-sky {
+    background: var(--gradient-sky);
+  }
+  
+  .gradient-pink {
+    background: var(--gradient-pink);
+  }
+  
+  .gradient-sage {
+    background: var(--gradient-sage);
+  }
+  
+  .gradient-hero {
+    background: var(--gradient-hero);
+  }
+  
+  .shadow-colored-sky {
+    box-shadow: var(--shadow-colored-sky);
+  }
+  
+  .shadow-colored-pink {
+    box-shadow: var(--shadow-colored-pink);
+  }
+  
+  .shadow-colored-sage {
+    box-shadow: var(--shadow-colored-sage);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
   }
 }
