@@ -23,32 +23,32 @@ const Hero = () => {
       <div className="container mx-auto px-4 py-20">
         <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
           {/* Text Content */}
-          <div className="flex-1 text-center lg:text-left animate-fade-in">
-            <div className="inline-block px-4 py-2 bg-primary/10 rounded-full mb-6">
+          <div className="flex-1 text-center lg:text-left">
+            <div className="inline-block px-4 py-2 bg-primary/10 rounded-full mb-6 animate-fade-in">
               <span className="text-primary font-medium text-sm">
                 👋 Welcome to my portfolio
               </span>
             </div>
             
-            <h1 className="text-5xl lg:text-7xl font-bold font-outfit mb-6 leading-tight">
+            <h1 className="text-5xl lg:text-7xl font-bold font-outfit mb-6 leading-tight animate-fade-in" style={{ animationDelay: "0.1s" }}>
               Hello, I'm{" "}
               <span className="bg-gradient-to-r from-sky via-pink to-sage bg-clip-text text-transparent">
                 Ally Lopes
               </span>
             </h1>
             
-            <h2 className="text-2xl lg:text-3xl font-outfit font-medium text-foreground/80 mb-6">
+            <h2 className="text-2xl lg:text-3xl font-outfit font-medium text-foreground/80 mb-6 animate-fade-in" style={{ animationDelay: "0.2s" }}>
               First-Year Computer Engineering Student | Creative Technologist | Artist
             </h2>
             
-            <p className="text-lg text-muted-foreground max-w-2xl mb-8 leading-relaxed">
+            <p className="text-lg text-muted-foreground max-w-2xl mb-8 leading-relaxed animate-fade-in" style={{ animationDelay: "0.3s" }}>
               I'm a first-year Computer Engineering student at Father Conceicao Rodrigues College of Engineering, 
               pursuing a Bachelor of Technology degree. I blend technical expertise with creative expression, 
               exploring the intersection of engineering and art.
             </p>
 
             {/* Stats */}
-            <div className="grid grid-cols-3 gap-6 mb-8 max-w-lg mx-auto lg:mx-0">
+            <div className="grid grid-cols-3 gap-6 mb-8 max-w-lg mx-auto lg:mx-0 animate-fade-in" style={{ animationDelay: "0.4s" }}>
               <div className="text-center lg:text-left">
                 <div className="text-3xl font-bold font-outfit text-sky">2+</div>
                 <div className="text-sm text-muted-foreground">Projects</div>
@@ -64,7 +64,7 @@ const Hero = () => {
             </div>
 
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start animate-fade-in" style={{ animationDelay: "0.5s" }}>
               <Button
                 onClick={() => scrollToSection("projects")}
                 className="bg-primary hover:bg-primary/90 text-white shadow-colored-sky group"
