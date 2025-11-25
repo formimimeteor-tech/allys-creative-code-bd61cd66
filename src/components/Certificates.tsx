@@ -2,9 +2,11 @@ import { useState } from "react";
 import { X, Award, Download } from "lucide-react";
 import { Card } from "./ui/card";
 import { Badge } from "./ui/badge";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const Certificates = () => {
   const [selectedCertificate, setSelectedCertificate] = useState<string | null>(null);
+  const { ref, isVisible } = useScrollAnimation();
 
   const certificates = [
     {
@@ -48,9 +50,9 @@ const Certificates = () => {
 
   return (
     <>
-      <section id="certificates" className="py-20 bg-card">
+      <section id="certificates" className="py-20 bg-card" ref={ref}>
         <div className="container mx-auto px-4">
-          <div className="text-center mb-16 animate-fade-in">
+          <div className={`text-center mb-16 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             <h2 className="text-4xl lg:text-5xl font-bold font-outfit mb-4">
               Certificates & <span className="text-primary">Achievements</span>
             </h2>
@@ -65,7 +67,7 @@ const Certificates = () => {
               const categoryCerts = certificates.filter((c) => c.category === category);
 
               return (
-                <div key={category} className="animate-slide-up" style={{ animationDelay: `${catIndex * 0.1}s` }}>
+                <div key={category} className={`transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`} style={{ transitionDelay: `${catIndex * 100 + 200}ms` }}>
                   <div className="flex items-center gap-3 mb-6">
                     <Award className="w-6 h-6 text-primary" />
                     <h3 className="text-2xl font-bold font-outfit">{category}</h3>

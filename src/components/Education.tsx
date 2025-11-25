@@ -1,7 +1,9 @@
 import { GraduationCap, Calendar, MapPin } from "lucide-react";
 import { Card } from "./ui/card";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const Education = () => {
+  const { ref, isVisible } = useScrollAnimation();
   const education = [
     {
       degree: "Bachelor of Technology in Computer Engineering",
@@ -30,9 +32,9 @@ const Education = () => {
   ];
 
   return (
-    <section id="education" className="py-20 bg-background">
+    <section id="education" className="py-20 bg-background" ref={ref}>
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16 animate-fade-in">
+        <div className={`text-center mb-16 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <h2 className="text-4xl lg:text-5xl font-bold font-outfit mb-4">
             My <span className="text-primary">Education</span>
           </h2>
@@ -43,8 +45,8 @@ const Education = () => {
           {education.map((edu, index) => (
             <Card
               key={index}
-              className={`p-6 lg:p-8 hover-lift hover:shadow-xl transition-all animate-slide-up border-l-4 border-${edu.color}`}
-              style={{ animationDelay: `${index * 0.1}s` }}
+              className={`p-6 lg:p-8 hover-lift hover:shadow-xl transition-all duration-700 border-l-4 border-${edu.color} ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+              style={{ transitionDelay: `${index * 200 + 200}ms` }}
             >
               <div className="flex flex-col lg:flex-row gap-6">
                 <div className={`flex-shrink-0 w-16 h-16 bg-${edu.color}/10 rounded-xl flex items-center justify-center`}>

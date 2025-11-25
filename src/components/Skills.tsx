@@ -1,6 +1,8 @@
 import { Badge } from "./ui/badge";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const Skills = () => {
+  const { ref, isVisible } = useScrollAnimation();
   const skills = [
     { name: "HTML", category: "Frontend", color: "sky" },
     { name: "JavaScript", category: "Frontend", color: "pink" },
@@ -15,9 +17,9 @@ const Skills = () => {
   const categories = ["Frontend", "Backend", "Programming", "Data Analysis"];
 
   return (
-    <section id="skills" className="py-20 bg-card">
+    <section id="skills" className="py-20 bg-card" ref={ref}>
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16 animate-fade-in">
+        <div className={`text-center mb-16 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <h2 className="text-4xl lg:text-5xl font-bold font-outfit mb-4">
             Skills & <span className="text-primary">Expertise</span>
           </h2>
@@ -37,8 +39,8 @@ const Skills = () => {
               return (
                 <div
                   key={category}
-                  className="animate-slide-up"
-                  style={{ animationDelay: `${catIndex * 0.1}s` }}
+                  className={`transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+                  style={{ transitionDelay: `${catIndex * 100 + 200}ms` }}
                 >
                   <h3 className="text-lg font-semibold font-outfit mb-4 text-muted-foreground">
                     {category}

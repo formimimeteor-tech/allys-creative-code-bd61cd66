@@ -1,8 +1,10 @@
 import { ExternalLink } from "lucide-react";
 import { Card } from "./ui/card";
 import { Badge } from "./ui/badge";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const Projects = () => {
+  const { ref, isVisible } = useScrollAnimation();
   const projects = [
     {
       title: "Zitistraws Project",
@@ -23,9 +25,9 @@ const Projects = () => {
   ];
 
   return (
-    <section id="projects" className="py-20 bg-background">
+    <section id="projects" className="py-20 bg-background" ref={ref}>
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16 animate-fade-in">
+        <div className={`text-center mb-16 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <h2 className="text-4xl lg:text-5xl font-bold font-outfit mb-4">
             Featured <span className="text-primary">Projects</span>
           </h2>
@@ -39,8 +41,8 @@ const Projects = () => {
           {projects.map((project, index) => (
             <Card
               key={index}
-              className="group overflow-hidden hover-lift hover:shadow-2xl transition-all animate-slide-up"
-              style={{ animationDelay: `${index * 0.1}s` }}
+              className={`group overflow-hidden hover-lift hover:shadow-2xl transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+              style={{ transitionDelay: `${index * 200 + 200}ms` }}
             >
               <div className="relative overflow-hidden aspect-video">
                 <img
