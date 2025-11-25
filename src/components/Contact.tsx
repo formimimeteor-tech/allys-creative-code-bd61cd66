@@ -1,8 +1,10 @@
 import { Mail, Phone, Linkedin, Instagram } from "lucide-react";
 import { Button } from "./ui/button";
 import { Card } from "./ui/card";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const Contact = () => {
+  const { ref, isVisible } = useScrollAnimation();
   const contactInfo = [
     {
       icon: Mail,
@@ -35,13 +37,13 @@ const Contact = () => {
   ];
 
   return (
-    <section id="contact" className="py-20 bg-background relative overflow-hidden">
+    <section id="contact" className="py-20 bg-background relative overflow-hidden" ref={ref}>
       {/* Background decorative elements */}
       <div className="absolute top-20 right-10 w-32 h-32 bg-sky/10 rounded-full blur-3xl" />
       <div className="absolute bottom-20 left-10 w-40 h-40 bg-pink/10 rounded-full blur-3xl" />
 
       <div className="container mx-auto px-4 relative z-10">
-        <div className="text-center mb-16 animate-fade-in">
+        <div className={`text-center mb-16 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <h2 className="text-4xl lg:text-5xl font-bold font-outfit mb-4">
             Let's <span className="text-primary">Connect!</span>
           </h2>
@@ -55,7 +57,7 @@ const Contact = () => {
           {/* Contact Cards in Floating Layout */}
           <div className="relative mb-16">
             {/* Center Profile */}
-            <div className="flex justify-center mb-12 animate-scale-in">
+            <div className={`flex justify-center mb-12 transition-all duration-700 delay-200 ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}>
               <div className="relative">
                 <div className="w-32 h-32 bg-gradient-to-br from-sky via-pink to-sage rounded-full p-1">
                   <div className="w-full h-full rounded-full bg-card flex items-center justify-center">
@@ -77,8 +79,8 @@ const Contact = () => {
               {contactInfo.map((contact, index) => (
                 <Card
                   key={index}
-                  className="p-6 text-center hover-lift hover:shadow-xl transition-all animate-scale-in group"
-                  style={{ animationDelay: `${index * 0.1}s` }}
+                  className={`p-6 text-center hover-lift hover:shadow-xl transition-all duration-700 group ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}
+                  style={{ transitionDelay: `${index * 100 + 300}ms` }}
                 >
                   <div className={`w-16 h-16 mx-auto mb-4 bg-${contact.color}/10 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform`}>
                     <contact.icon className={`w-8 h-8 text-${contact.color}`} />
@@ -98,7 +100,7 @@ const Contact = () => {
           </div>
 
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in">
+          <div className={`flex flex-col sm:flex-row gap-4 justify-center transition-all duration-700 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             <Button
               size="lg"
               className="bg-primary hover:bg-primary/90 text-white shadow-colored-sky"

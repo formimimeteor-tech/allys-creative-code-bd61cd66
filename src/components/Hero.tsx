@@ -32,7 +32,7 @@ const Hero = () => {
             
             <h1 className="text-5xl lg:text-7xl font-bold font-outfit mb-6 leading-tight animate-fade-in" style={{ animationDelay: "0.1s" }}>
               Hello, I'm{" "}
-              <span className="bg-gradient-to-r from-sky via-pink to-sage bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-sky via-pink to-sage bg-clip-text text-transparent typing-text">
                 Ally Lopes
               </span>
             </h1>

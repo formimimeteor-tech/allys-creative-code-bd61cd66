@@ -1,6 +1,8 @@
 import { Code, Palette, Rocket, Sparkles } from "lucide-react";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const About = () => {
+  const { ref, isVisible } = useScrollAnimation();
   const focuses = [
     {
       icon: Code,
@@ -25,9 +27,9 @@ const About = () => {
   ];
 
   return (
-    <section id="about" className="py-20 bg-card">
+    <section id="about" className="py-20 bg-card" ref={ref}>
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16 animate-fade-in">
+        <div className={`text-center mb-16 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <h2 className="text-4xl lg:text-5xl font-bold font-outfit mb-4">
             About <span className="text-primary">Me</span>
           </h2>
@@ -36,7 +38,7 @@ const About = () => {
 
         <div className="grid lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
           {/* Left: Bio Text */}
-          <div className="space-y-6 animate-slide-up">
+          <div className={`space-y-6 transition-all duration-700 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             <p className="text-lg text-muted-foreground leading-relaxed">
               I'm currently pursuing my Bachelor of Technology in Computer Engineering at 
               <span className="font-semibold text-foreground"> Father Conceicao Rodrigues College of Engineering</span> in Bandra.
@@ -73,7 +75,7 @@ const About = () => {
           </div>
 
           {/* Right: Timeline/Journey */}
-          <div className="animate-slide-up" style={{ animationDelay: "0.2s" }}>
+          <div className={`transition-all duration-700 delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             <div className="bg-gradient-to-br from-sky/10 via-pink/10 to-sage/10 p-8 rounded-2xl shadow-lg">
               <h3 className="text-2xl font-bold font-outfit mb-6 text-center">My Journey</h3>
               

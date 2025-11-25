@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { X } from "lucide-react";
 import { Card } from "./ui/card";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const Artwork = () => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const { ref, isVisible } = useScrollAnimation();
 
   const artworks = [
     {
@@ -30,9 +32,9 @@ const Artwork = () => {
 
   return (
     <>
-      <section id="artwork" className="py-20 bg-card">
+      <section id="artwork" className="py-20 bg-card" ref={ref}>
         <div className="container mx-auto px-4">
-          <div className="text-center mb-16 animate-fade-in">
+          <div className={`text-center mb-16 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             <h2 className="text-4xl lg:text-5xl font-bold font-outfit mb-4">
               Artwork & <span className="text-secondary">Creative Expression</span>
             </h2>
@@ -46,8 +48,8 @@ const Artwork = () => {
             {artworks.map((artwork, index) => (
               <Card
                 key={index}
-                className="group overflow-hidden cursor-pointer hover-lift hover:shadow-2xl transition-all animate-scale-in"
-                style={{ animationDelay: `${index * 0.1}s` }}
+                className={`group overflow-hidden cursor-pointer hover-lift hover:shadow-2xl transition-all duration-700 ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}
+                style={{ transitionDelay: `${index * 100 + 200}ms` }}
                 onClick={() => setSelectedImage(artwork.image)}
               >
                 <div className="relative aspect-square overflow-hidden">
