@@ -1,5 +1,6 @@
 import { ArrowRight, Download } from "lucide-react";
 import { Button } from "./ui/button";
+import { Avatar, AvatarImage, AvatarFallback } from "./ui/avatar";
 
 const Hero = () => {
   const scrollToSection = (id: string) => {
@@ -89,11 +90,16 @@ const Hero = () => {
               <div className="absolute inset-0 bg-gradient-to-br from-sky via-pink to-sage rounded-full blur-2xl opacity-30 animate-pulse" />
               <div className="relative w-64 h-64 lg:w-96 lg:h-96">
                 <div className="absolute inset-0 bg-gradient-to-br from-sky via-pink to-sage rounded-full p-1">
-                  <div className="w-full h-full rounded-full bg-card flex items-center justify-center overflow-hidden">
-                    <div className="w-full h-full bg-gradient-to-br from-muted to-card rounded-full flex items-center justify-center text-6xl font-bold text-primary">
+                  <Avatar className="w-full h-full">
+                    <AvatarImage 
+                      src="https://i.postimg.cc/TY933CJr/IMG-20251103-WA0006.jpg" 
+                      alt="Ally Lopes"
+                      className="object-cover"
+                    />
+                    <AvatarFallback className="text-6xl font-bold text-primary bg-gradient-to-br from-muted to-card">
                       AL
-                    </div>
-                  </div>
+                    </AvatarFallback>
+                  </Avatar>
                 </div>
               </div>
             </div>
